@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WiFi implements ApplicationContextAware, InitializingBean, DisposableBean, BeanNameAware {
+public class WiFi implements Network, ApplicationContextAware, InitializingBean, DisposableBean, BeanNameAware {
 
 	 //@Autowired
 	private String band;

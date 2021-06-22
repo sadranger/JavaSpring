@@ -60,7 +60,9 @@
 	</bean>
 
 	
-	<bean id="bluetooth" class="com.spring.start.Bluetooth" />
+	<bean id="bluetooth" class="com.spring.start.Bluetooth">
+		<property name="specs" ref="dir615"/>
+	</bean>
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="config.properties" />
 	</bean>

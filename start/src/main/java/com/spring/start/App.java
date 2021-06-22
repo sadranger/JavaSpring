@@ -18,7 +18,7 @@ public class App
         con = new ClassPathXmlApplicationContext("config.xml");
         ((AbstractApplicationContext) con).registerShutdownHook();
         
-        WiFi n = (WiFi) con.getBean("wifi");
+        Network n = (Network) con.getBean("bluetooth");
         n.state();
         //System.out.println(n.toString());
         
