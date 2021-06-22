@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- <context:component-scan base-package="com.spring.start"></context:component-scan> -->
+	
+	<bean id="parentlist" class="com.spring.start.WiFi" init-method="init" destroy-method="dest">
+	
+		<property name="specs">
+			<list>
+				<ref bean="dir615" />
+				<ref bean="dir650" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="wifi" class="com.spring.start.WiFi" parent="parentlist">
+		<property name="specs">
+			<list merge="true">
+				<ref bean="dir815" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dir615" class="com.spring.start.Specs">
+			<property name="name" value="DIR615" />
+			<property name="range" value="2.4GHz" />
+			<property name="speed" value="300MBPS" />
+			<property name="indicator" value="LED" />
+			<property name="wanPorts" value="1" />
+			<property name="lanPorts" value="4" />
+			<property name="antenna" value="5dB" />
+	</bean>
+
+	<bean id="dir650" class="com.spring.start.Specs">
+		<property name="name" value="DIR650" />
+		<property name="range" value="5GHz" />
+		<property name="speed" value="750MBPS" />
+		<property name="indicator" value="LCD" />
+		<property name="wanPorts" value="2" />
+		<property name="lanPorts" value="10" />
+		<property name="antenna" value="7dB" />
+	</bean>
+	
+	<bean id="dir815" class="com.spring.start.Specs">
+		<property name="name" value="DIR815" />
+		<property name="range" value="5GHz" />
+		<property name="speed" value="600MBPS" />
+		<property name="indicator" value="LED" />
+		<property name="wanPorts" value="1" />
+		<property name="lanPorts" value="8" />
+		<property name="antenna" value="7dB" />
+	</bean>
+
+	
+	<bean id="bluetooth" class="com.spring.start.Bluetooth" />
+	<bean class="com.spring.start.DisplayPostProcessing" />
+
+
+</beans>
