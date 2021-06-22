@@ -30,9 +30,9 @@
 	</bean>
 	
 	<bean id="dir615" class="com.spring.start.Specs">
-			<property name="name" value="DIR615" />
-			<property name="range" value="2.4GHz" />
-			<property name="speed" value="300MBPS" />
+			<property name="name" value="${name}" />
+			<property name="range" value="${range}" />
+			<property name="speed" value="${speed}" />
 			<property name="indicator" value="LED" />
 			<property name="wanPorts" value="1" />
 			<property name="lanPorts" value="4" />
@@ -61,7 +61,10 @@
 
 	
 	<bean id="bluetooth" class="com.spring.start.Bluetooth" />
-	<bean class="com.spring.start.DisplayPostProcessing" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="config.properties" />
+	</bean>
+	
 
 
 </beans>
