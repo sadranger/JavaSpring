@@ -1,15 +1,21 @@
-Module 22: Using MessageSource to get Message from Property files
-bean class: org.springframework.context.support.ResourceBundleMessageSource
-syntax:
-<bean id="" class="">
-	<property name="basenames">
-		<list>
-			<value>nameOfPropertyFile1</value>
-			<value>nameOfPropertyFile2</value>
-		</list>
-	</property>
-</bean>
-We can get the bean from applicationContext or from MessageSource class
-syntax: context.getMessage() or messageSource.getMessage()
-We can directly get runtime values using PropertyPlaceholder (arguments taken as {0},{1} in the property file and Objects given in the input getMessage() method)
+Module 22: Using MessageSource to get Message from Property files (MessageSource and Internationalizaiton)
+	bean class: org.springframework.context.support.ResourceBundleMessageSource
+	syntax:
+	<bean id="" class="">
+		<property name="basenames">
+			<list>
+				<value>nameOfPropertyFile1</value>
+				<value>nameOfPropertyFile2</value>
+			</list>
+		</property>
+	</bean>
+	We can get the bean from applicationContext or from MessageSource class
+	syntax: context.getMessage() or messageSource.getMessage()
+	We can directly get runtime values using PropertyPlaceholder (arguments taken as {0},{1} in the property file and Objects given in the input getMessage() method)
 
+
+Module 23: Event Listener in spring
+	Spring classes: ApplicationEvent which implements a constructor, ApplicationEventPublisherAware implements a application publisher
+	Spring Interface: ApplicationListener which implements onApplicationEvent method
+	Base class should be implementing ApplicationEventPublisherAware with publisher method which starts publishing after the publisher is set which is in DrawEvent class.
+	Basically, we are creati ng a draw event custom class with a custom method and calling from different class by publishing the event using ApplicationEventPublisherAware interface
