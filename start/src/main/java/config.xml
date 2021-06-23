@@ -11,7 +11,7 @@
 
 	<!-- <context:component-scan base-package="com.spring.start"></context:component-scan> -->
 	
-	<bean id="parentlist" class="com.spring.start.WiFi" init-method="init" destroy-method="dest">
+	<!-- <bean id="parentlist" class="com.spring.start.WiFi" init-method="init" destroy-method="dest">
 	
 		<property name="specs">
 			<list>
@@ -27,9 +27,10 @@
 				<ref bean="dir815" />
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 	
-	<bean id="dir615" class="com.spring.start.Specs">
+	<bean id="dir6" class="com.spring.start.Specs">
+			
 			<property name="name" value="${name}" />
 			<property name="range" value="${range}" />
 			<property name="speed" value="${speed}" />
@@ -39,7 +40,7 @@
 			<property name="antenna" value="5dB" />
 	</bean>
 
-	<bean id="dir650" class="com.spring.start.Specs">
+	 <bean id="dir615" class="com.spring.start.Specs">
 		<property name="name" value="DIR650" />
 		<property name="range" value="5GHz" />
 		<property name="speed" value="750MBPS" />
@@ -50,6 +51,7 @@
 	</bean>
 	
 	<bean id="dir815" class="com.spring.start.Specs">
+	<qualifier value="qualify" />
 		<property name="name" value="DIR815" />
 		<property name="range" value="5GHz" />
 		<property name="speed" value="600MBPS" />
@@ -60,13 +62,26 @@
 	</bean>
 
 	
-	<bean id="bluetooth" class="com.spring.start.Bluetooth">
+	<!-- <bean id="bluetooth" class="com.spring.start.Bluetooth">
 		<property name="specs" ref="dir615"/>
-	</bean>
+	</bean> -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="config.properties" />
 	</bean>
 	
-
+	<context:component-scan base-package="com.spring.start" />
+	<context:annotation-config/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>mymessage</value>
+				<value>config</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.beans.factory.annotation.Qualifier" /> -->
 
 </beans>

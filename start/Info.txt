@@ -1,0 +1,15 @@
+Module 22: Using MessageSource to get Message from Property files
+bean class: org.springframework.context.support.ResourceBundleMessageSource
+syntax:
+<bean id="" class="">
+	<property name="basenames">
+		<list>
+			<value>nameOfPropertyFile1</value>
+			<value>nameOfPropertyFile2</value>
+		</list>
+	</property>
+</bean>
+We can get the bean from applicationContext or from MessageSource class
+syntax: context.getMessage() or messageSource.getMessage()
+We can directly get runtime values using PropertyPlaceholder (arguments taken as {0},{1} in the property file and Objects given in the input getMessage() method)
+

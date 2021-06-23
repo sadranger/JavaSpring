@@ -20,6 +20,11 @@ public class App
         
         Network n = (Network) con.getBean("bluetooth");
         n.state();
+        System.out.println(con.getMessage("welcome", null, "Hello!!", null));
+        System.out.println(con.getMessage("greeting", null,null));
+        System.out.println(con.getMessage("name", null,null));
+        
+        
         //System.out.println(n.toString());
         
 		/*
