@@ -13,23 +13,30 @@ public class ConnectDAOInit {
 	private static Connection con = null;
 	
 	@SuppressWarnings("deprecation")
-	public Mouse getMouse(int id) {
+	public Mouse getMouse(int id, String name) {
 		
 		//String driver = "org.apache.derby.jdbc.ClientDriver";
 		try {
 		//Class.forName(driver).newInstance();
 		con = DriverManager.getConnection("jdbc:derby://localhost:1527/db");
-		PreparedStatement ps = con.prepareStatement("select * from mouse where id= ?");
-		ps.setInt(1, id);
+		PreparedStatement select = con.prepareStatement("select * from mouse where id= ? and name= ?");
+		PreparedStatement insert = con.prepareStatement("insert into mouse values(?,?,?)");
+		select.setInt(1, id);
+		select.setString(2, name);
+		insert.setInt(1, 3);
+		insert.setString(2,"custom String");
+		insert.setString(3, "Test Insert");
 	
 		
 		Mouse mouse = null;
-		ResultSet rs = ps.executeQuery();
+		int rsInsert = insert.executeUpdate();
+		System.out.println(rsInsert);
+		ResultSet rs = select.executeQuery();
 		if(rs.next()) {
 			mouse = new Mouse(id, rs.getString("name"));
 		}
 		rs.close();
-		ps.close();
+		select.close();
 		return mouse;
 		}
 		catch(Exception e) {
